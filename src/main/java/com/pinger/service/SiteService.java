@@ -4,14 +4,16 @@ import com.pinger.messaging.SettingsProvider;
 import com.pinger.model.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SiteService {
 
     public static List<Site> getAll() {
         final List<Site> sites = new ArrayList<>();
         final List<String> siteKeys = SettingsProvider.getInstance().getKeysWithPrefix("site");
-        final List<String> siteTags = new ArrayList<>();
+        final Set<String> siteTags = new HashSet<>();
         for (final String siteKey : siteKeys) {
             siteTags.add(SettingsProvider.getInstance().getNextKeyPart(siteKey, "site"));
         }
